@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>blog while un_unspecified_amount_of_time</title>
+    <description>Random nonsense and sporadic insights from Magnus Stahre.
+</description>
+    <link>http://ms.xy.org/</link>
+    <atom:link href="http://ms.xy.org/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Sun, 23 Aug 2015 17:24:52 -0400</pubDate>
+    <lastBuildDate>Sun, 23 Aug 2015 17:24:52 -0400</lastBuildDate>
+    <generator>Jekyll v2.5.3</generator>
+    
+      <item>
+        <title>Squashing top commits</title>
+        <description>&lt;p&gt;Sometimes you find yourself wanting to squash the top commits of a
+branch down to just one commit. Most of the time this can be
+accomplished with an interactive rebase:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-console&quot; data-lang=&quot;console&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt; git log -n &lt;span class=&quot;m&quot;&gt;3&lt;/span&gt; --oneline
+&lt;span class=&quot;go&quot;&gt;474142a Update link to Pro Git in CONTRIBUTING page&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;3a758a8 Update link to Pro Git in CONTRIBUTING page&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;b22ae59 update org name in links&lt;/span&gt;
+
+&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt; git rebase -i b22ae59&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Changing the keyword &lt;code&gt;pick&lt;/code&gt; on the second line to &lt;code&gt;fixup,&lt;/code&gt; or &lt;code&gt;f&lt;/code&gt; for
+short, will squash the two commits into one.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;pick 3a758a8 Update link to Pro Git in CONTRIBUTING page
+fixup 474142a Update link to Pro Git in CONTRIBUTING page
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This should result in something like:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-console&quot; data-lang=&quot;console&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt; git log -n &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt; --oneline
+&lt;span class=&quot;go&quot;&gt;4c3d80a Update link to Pro Git in CONTRIBUTING page&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;b22ae59 update org name in links&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Sometimes rebasing directly is not feasible, e.g. when you have a
+botched merge commit that you have fixed, but later realized you
+wanted to roll into the same commit. In this scenario you can usually
+use a combination of &lt;code&gt;reset&lt;/code&gt; and &lt;code&gt;commit --amend&lt;/code&gt;. Using the same
+example as above:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-console&quot; data-lang=&quot;console&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt; git log -n &lt;span class=&quot;m&quot;&gt;3&lt;/span&gt; --oneline
+&lt;span class=&quot;go&quot;&gt;474142a Update link to Pro Git in CONTRIBUTING page&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;3a758a8 Update link to Pro Git in CONTRIBUTING page&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;b22ae59 update org name in links&lt;/span&gt;
+
+&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt; git reset --soft 3a758a8
+&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt; git commit --amend -C HEAD&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code&gt;reset --soft&lt;/code&gt; will rewind the current branch, but leave the index
+intact so that &lt;code&gt;commit --amend&lt;/code&gt; can update the first commit. Adding
+&lt;code&gt;-C HEAD&lt;/code&gt; will reuse its commit message. The end result should be similar:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-console&quot; data-lang=&quot;console&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt; puter:spring-framework&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;master&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; ms&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git log -n &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt; --oneline
+&lt;span class=&quot;go&quot;&gt;46584d3 Update link to Pro Git in CONTRIBUTING page&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;b22ae59 update org name in links&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+</description>
+        <pubDate>Tue, 04 Mar 2014 00:00:00 -0500</pubDate>
+        <link>http://ms.xy.org/2014/03/04/squashing-top-commits/</link>
+        <guid isPermaLink="true">http://ms.xy.org/2014/03/04/squashing-top-commits/</guid>
+        
+        
+      </item>
+    
+  </channel>
+</rss>
